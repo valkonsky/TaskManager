@@ -6,7 +6,7 @@ import ru.valkonsky.repository.AuthModelLayer;
 
 import java.sql.*;
 
-public class AuthModelLayerImpl implements AuthModelLayer {
+public class SQLAuthModelLayerImpl implements AuthModelLayer {
     Connection connection  = DatabaseConnector.getConnection();
     Statement statement;
     ResultSet resultSet;

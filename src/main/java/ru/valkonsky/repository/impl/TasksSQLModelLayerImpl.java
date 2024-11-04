@@ -5,13 +5,11 @@ import ru.valkonsky.entity.Task;
 import ru.valkonsky.repository.TasksModelLayer;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 
 public class TasksSQLModelLayerImpl implements TasksModelLayer {
-    Task task;
     Connection connection  = DatabaseConnector.getConnection();
-    Statement statement;
     ResultSet resultSet;
+    Task task = null;
 
     @Override
     public void addTask(int id, String name, String description, Timestamp timestamp, int userid) {
@@ -33,16 +31,31 @@ public class TasksSQLModelLayerImpl implements TasksModelLayer {
 
     @Override
     public void removeTask(int id) {
-
+        String query = "DELETE FROM tasks.tasks WHERE id =?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void setTask(int id) {
+    public Task getTask(int id) {
 
-    }
-
-    @Override
-    public void getTask(int id) {
-
+        String query = "SELECT * FROM tasks.tasks WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement  = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                task = new Task(resultSet.getInt("id"),resultSet.getString("name"),resultSet.getString("description")
+                        ,resultSet.getTimestamp("timestamp"),resultSet.getInt("userid"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return task;
     }
 }
