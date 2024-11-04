@@ -21,7 +21,8 @@ public class AuthModelLayerImpl implements AuthModelLayer {
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(int id)// rewrite to preparedstatement
+     {
         try {
             resultSet = statement.executeQuery("SELECT * FROM tasks.users WHERE id="+ id);
         } catch (SQLException e) {
@@ -39,7 +40,7 @@ public class AuthModelLayerImpl implements AuthModelLayer {
                 throw new RuntimeException(e);
             }
         }
-    }
+     }
 
     @Override
     public User getUserByLoginAndPass(String login, String password) {

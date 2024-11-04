@@ -2,23 +2,21 @@ package ru.valkonsky;
 
 import ru.valkonsky.entity.User;
 import ru.valkonsky.repository.AuthModelLayer;
+import ru.valkonsky.repository.TasksModelLayer;
 import ru.valkonsky.repository.impl.AuthModelLayerImpl;
+import ru.valkonsky.repository.impl.TasksSQLModelLayerImpl;
 
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
         AuthModelLayer authModelLayer = new AuthModelLayerImpl();
+        TasksModelLayer tasksModelLayer = new TasksSQLModelLayerImpl();
 
-        System.out.println("Authentciation");
-        System.out.println("Input login");
-        Scanner scanner = new Scanner(System.in);
-        String login = scanner.next();
-        System.out.println("Input password");
-        String pass = scanner.next();
-        User user = authModelLayer.getUserByLoginAndPass(login,pass);
-        System.out.println(user.getName());
-        System.out.println(user.getPassword());
+        tasksModelLayer.addTask(3,"testJavaTask","testJavaDescription", Timestamp.valueOf((java.time.LocalDate.of(2024,11,4).atStartOfDay())),1);
+
     }
 }
