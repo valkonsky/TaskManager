@@ -16,4 +16,9 @@ public class AuthControllerImpl implements AuthController {
     public User getUserById(int id) {
         return authModelLayer.getUserById(id);
     }
+
+    @Override
+    public User getUserByLoginAndPass(String name, String pass) {
+        return authModelLayer.getUserByLoginAndPass(name,pass);
+    }
 }
