@@ -66,7 +66,17 @@ public class SQLAuthModelLayerImpl implements AuthModelLayer {
     }
 
     @Override
-    public void addUser() {
+    public void addUser(String login, String password) {
+        String query = "INSERT INTO tasks.users (\"name\",\"password\") VALUES (?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
 
+            //preparedStatement.setInt(1,id);
+            preparedStatement.setString(1,login);
+            preparedStatement.setString(2,password);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

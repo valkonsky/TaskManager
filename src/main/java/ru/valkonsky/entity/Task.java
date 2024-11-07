@@ -1,7 +1,6 @@
 package ru.valkonsky.entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Task {
 
@@ -11,8 +10,23 @@ public class Task {
     private Timestamp timestamp;
     private int userId;
 
-    public Task(int id, String name, String description,Timestamp timestamp,int userId ){
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Task(int id, String name, String description, Timestamp timestamp, int userId ){
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.timestamp = timestamp;
+        this.userId =userId;
+    }
+
+    public Task(String name, String description, Timestamp timestamp, int userId ){
         this.name = name;
         this.description = description;
         this.timestamp = timestamp;
@@ -43,7 +57,7 @@ public class Task {
         this.description = description;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 

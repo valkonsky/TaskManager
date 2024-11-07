@@ -12,16 +12,16 @@ public class TasksSQLModelLayerImpl implements TasksModelLayer {
     Task task = null;
 
     @Override
-    public void addTask(int id, String name, String description, Timestamp timestamp, int userid) {
-        String query = "INSERT INTO tasks.tasks VALUES (?,?,?,?,?)";
+    public void addTask( String name, String description, Timestamp timestamp, int userid) {
+        String query = "INSERT INTO tasks.tasks (\"name\", \"description\",\"timestamp\",\"userId\") VALUES (?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setInt(1,id);
-            preparedStatement.setString(2,name);
-            preparedStatement.setString(3,description);
-            preparedStatement.setTimestamp(4,timestamp);
-            preparedStatement.setInt(5,userid);
+            //preparedStatement.setInt(1,id);
+            preparedStatement.setString(1,name);
+            preparedStatement.setString(2,description);
+            preparedStatement.setTimestamp(3,timestamp);
+            preparedStatement.setInt(4,userid);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

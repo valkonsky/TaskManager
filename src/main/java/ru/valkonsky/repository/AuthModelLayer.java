@@ -6,5 +6,5 @@ public interface AuthModelLayer {
     User getUserById(int id);
     User getUserByLoginAndPass(String login, String password);
     void removeUser();
-    void addUser();
+    void addUser(String login, String password);
 }

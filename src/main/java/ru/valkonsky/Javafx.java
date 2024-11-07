@@ -11,8 +11,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import ru.valkonsky.controller.AuthController;
+import ru.valkonsky.controller.TasksController;
 import ru.valkonsky.controller.impl.AuthControllerImpl;
+import ru.valkonsky.controller.impl.TasksControllerImpl;
+import ru.valkonsky.entity.Task;
 import ru.valkonsky.entity.User;
+
+import java.sql.Timestamp;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.util.Date;
 
 public class Javafx extends Application {
 
@@ -23,6 +31,7 @@ public class Javafx extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         AuthController authController = new AuthControllerImpl();
+        TasksController tasksController = new TasksControllerImpl();
         Label label = new Label("Task Manager");
         Label loginLabel = new Label("Login");
         Label passwordLabel = new Label("Password");
@@ -37,11 +46,14 @@ public class Javafx extends Application {
                     System.out.println("id: " + user.getId());
                     System.out.println("name: " + user.getName());
                     System.out.println("password: " + user.getPassword());
+
+
                     Label label1 = new Label(user.getName());
                     VBox vBox1 = new VBox(label1);
 
                     Scene mainScene = new Scene(vBox1,600,600);
                     primaryStage.setScene(mainScene);
+
                 }else{
                     System.err.println("user not found");
                 }
