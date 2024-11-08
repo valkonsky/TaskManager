@@ -5,6 +5,8 @@ import ru.valkonsky.entity.Task;
 import ru.valkonsky.repository.TasksModelLayer;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TasksSQLModelLayerImpl implements TasksModelLayer {
     Connection connection  = DatabaseConnector.getConnection();
@@ -43,19 +45,40 @@ public class TasksSQLModelLayerImpl implements TasksModelLayer {
 
     @Override
     public Task getTask(int id) {
-
         String query = "SELECT * FROM tasks.tasks WHERE id = ?";
         try {
             PreparedStatement preparedStatement  = connection.prepareStatement(query);
             preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                task = new Task(resultSet.getInt("id"),resultSet.getString("name"),resultSet.getString("description")
-                        ,resultSet.getTimestamp("timestamp"),resultSet.getInt("userid"));
+                task = new Task(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description")
+                        ,resultSet.getTimestamp("timestamp"),
+                        resultSet.getInt("userid"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return task;
+    }
+
+    @Override
+    public List<Task> getAllTasksByUserId(int userid) {
+        List<Task> tasks = new ArrayList<>();
+        String query = "SELECT * FROM tasks.tasks WHERE tasks.userid = ?";
+        try {
+            PreparedStatement preparedStatement  = connection.prepareStatement(query);
+            preparedStatement.setInt(1,userid);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                task = new Task(resultSet.getInt("id"),resultSet.getString("name"),resultSet.getString("description")
+                        ,resultSet.getTimestamp("timestamp"),resultSet.getInt("userId"));
+                tasks.add(task);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return tasks;
     }
 }

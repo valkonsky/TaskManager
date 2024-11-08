@@ -5,6 +5,8 @@ import ru.valkonsky.entity.Task;
 import ru.valkonsky.repository.TasksModelLayer;
 import ru.valkonsky.repository.impl.TasksSQLModelLayerImpl;
 
+import java.util.List;
+
 public class TasksControllerImpl implements TasksController {
     TasksModelLayer tasksModelLayer;
 
@@ -14,6 +16,11 @@ public class TasksControllerImpl implements TasksController {
     @Override
     public Task getTaskById(int id) {
         return null;
+    }
+
+    @Override
+    public List<Task> getAllTaskByUserId(int id) {
+        return tasksModelLayer.getAllTasksByUserId(id);
     }
 
     @Override
