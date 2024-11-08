@@ -1,6 +1,6 @@
-package ru.valkonsky.controller;
+package ru.valkonsky.taskmanager.controller;
 
-import ru.valkonsky.entity.Task;
+import ru.valkonsky.taskmanager.entity.Task;
 
 import java.util.List;
 

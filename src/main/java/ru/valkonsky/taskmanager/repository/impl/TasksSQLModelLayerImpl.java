@@ -1,15 +1,17 @@
-package ru.valkonsky.repository.impl;
+package ru.valkonsky.taskmanager.repository.impl;
 
-import ru.valkonsky.DatabaseConnector;
-import ru.valkonsky.entity.Task;
-import ru.valkonsky.repository.TasksModelLayer;
+
+
+import ru.valkonsky.taskmanager.DataBaseConnector;
+import ru.valkonsky.taskmanager.entity.Task;
+import ru.valkonsky.taskmanager.repository.TasksModelLayer;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TasksSQLModelLayerImpl implements TasksModelLayer {
-    Connection connection  = DatabaseConnector.getConnection();
+    Connection connection  = DataBaseConnector.getConnection();
     ResultSet resultSet;
     Task task = null;
 

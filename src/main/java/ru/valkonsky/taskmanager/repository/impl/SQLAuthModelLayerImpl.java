@@ -1,13 +1,15 @@
-package ru.valkonsky.repository.impl;
+package ru.valkonsky.taskmanager.repository.impl;
 
-import ru.valkonsky.DatabaseConnector;
-import ru.valkonsky.entity.User;
-import ru.valkonsky.repository.AuthModelLayer;
+
+
+import ru.valkonsky.taskmanager.DataBaseConnector;
+import ru.valkonsky.taskmanager.entity.User;
+import ru.valkonsky.taskmanager.repository.AuthModelLayer;
 
 import java.sql.*;
 
 public class SQLAuthModelLayerImpl implements AuthModelLayer {
-    Connection connection  = DatabaseConnector.getConnection();
+    Connection connection  = DataBaseConnector.getConnection();
     Statement statement;
     ResultSet resultSet;
 

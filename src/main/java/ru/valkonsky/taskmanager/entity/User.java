@@ -1,4 +1,4 @@
-package ru.valkonsky.entity;
+package ru.valkonsky.taskmanager.entity;
 
 public class User {
 

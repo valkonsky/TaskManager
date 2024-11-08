@@ -1,9 +1,10 @@
-package ru.valkonsky.controller.impl;
+package ru.valkonsky.taskmanager.controller.impl;
 
-import ru.valkonsky.controller.AuthController;
-import ru.valkonsky.entity.User;
-import ru.valkonsky.repository.AuthModelLayer;
-import ru.valkonsky.repository.impl.SQLAuthModelLayerImpl;
+
+import ru.valkonsky.taskmanager.controller.AuthController;
+import ru.valkonsky.taskmanager.entity.User;
+import ru.valkonsky.taskmanager.repository.AuthModelLayer;
+import ru.valkonsky.taskmanager.repository.impl.SQLAuthModelLayerImpl;
 
 public class AuthControllerImpl implements AuthController {
     AuthModelLayer authModelLayer;

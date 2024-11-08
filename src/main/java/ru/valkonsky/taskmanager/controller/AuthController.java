@@ -1,6 +1,7 @@
-package ru.valkonsky.controller;
+package ru.valkonsky.taskmanager.controller;
 
-import ru.valkonsky.entity.User;
+
+import ru.valkonsky.taskmanager.entity.User;
 
 public interface AuthController {
 

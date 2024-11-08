@@ -1,9 +1,10 @@
-package ru.valkonsky.controller.impl;
+package ru.valkonsky.taskmanager.controller.impl;
 
-import ru.valkonsky.controller.TasksController;
-import ru.valkonsky.entity.Task;
-import ru.valkonsky.repository.TasksModelLayer;
-import ru.valkonsky.repository.impl.TasksSQLModelLayerImpl;
+
+import ru.valkonsky.taskmanager.controller.TasksController;
+import ru.valkonsky.taskmanager.entity.Task;
+import ru.valkonsky.taskmanager.repository.TasksModelLayer;
+import ru.valkonsky.taskmanager.repository.impl.TasksSQLModelLayerImpl;
 
 import java.util.List;
 

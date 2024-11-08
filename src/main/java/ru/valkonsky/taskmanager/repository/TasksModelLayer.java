@@ -1,6 +1,8 @@
-package ru.valkonsky.repository;
+package ru.valkonsky.taskmanager.repository;
 
-import ru.valkonsky.entity.Task;
+
+
+import ru.valkonsky.taskmanager.entity.Task;
 
 import java.sql.Timestamp;
 import java.util.List;

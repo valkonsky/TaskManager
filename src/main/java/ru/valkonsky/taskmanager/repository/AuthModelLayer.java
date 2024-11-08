@@ -1,6 +1,7 @@
-package ru.valkonsky.repository;
+package ru.valkonsky.taskmanager.repository;
 
-import ru.valkonsky.entity.User;
+
+import ru.valkonsky.taskmanager.entity.User;
 
 public interface AuthModelLayer {
     User getUserById(int id);
