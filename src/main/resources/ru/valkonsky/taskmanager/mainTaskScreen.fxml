@@ -11,9 +11,9 @@
             fx:controller="ru.valkonsky.taskmanager.controller.impl.MainTaskScreenControllerImpl"
             prefHeight="400.0" prefWidth="600.0">
     <top>
-        <Label text="Label" BorderPane.alignment="CENTER" />
+        <Label fx:id="user" BorderPane.alignment="CENTER"/>
     </top>
     <center>
-        <ListView/>
+        <ListView fx:id="tasks"/>
     </center>
 </BorderPane>

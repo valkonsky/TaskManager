@@ -44,11 +44,13 @@ public class AuthControllerImpl {
             Stage stage = (Stage) login.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("mainTaskScreen.fxml"));
+            MainTaskScreenControllerImpl.userId = user.getId();
             Parent root1 =fxmlLoader.load();
             stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("MainScreen");
             stage.setScene(new Scene(root1));
+
             stage.show();
         }else{
             System.err.println("wrong data");
