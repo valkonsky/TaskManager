@@ -12,6 +12,7 @@
             prefHeight="400.0" prefWidth="600.0">
     <top>
         <Label fx:id="user" BorderPane.alignment="CENTER"/>
+
     </top>
     <center>
         <TableView fx:id="tasks" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -26,6 +27,14 @@
         </TableView>
     </center>
     <bottom>
-        <Button fx:id="addNewTask" text="add task" onAction="#addNewTask"/>
+        <HBox>
+            <children>
+                <Label text="task name"/>
+                <TextField fx:id="nameNewTask" text="name"/>
+                <Label text="task description"/>
+                <TextField fx:id="descNewTask" text="description"/>
+                <Button fx:id="addNewTask" text="add task" onAction="#addNewTask"/>
+            </children>
+        </HBox>
     </bottom>
 </BorderPane>

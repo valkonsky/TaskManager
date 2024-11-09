@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ru.valkonsky.taskmanager.entity.Task;
@@ -15,6 +16,7 @@ import ru.valkonsky.taskmanager.repository.impl.TasksSQLModelLayerImpl;
 public class MainTaskScreenControllerImpl {
 
     public static int userId = 0;
+
 
     AuthModelLayer authModelLayer;
     TasksModelLayer tasksModelLayer;
@@ -28,6 +30,10 @@ public class MainTaskScreenControllerImpl {
     @FXML
     Label user;
 
+    @FXML
+    public TextField nameNewTask;
+    @FXML
+    public TextField descNewTask;
     @FXML
     private TableColumn<Task, String> name;
     @FXML
@@ -63,6 +69,10 @@ public class MainTaskScreenControllerImpl {
 
     @FXML
     public void addNewTask(ActionEvent actionEvent) {
-        System.out.println("now not s supported");
+        Task task = new Task(nameNewTask.getText(),descNewTask.getText(),userId);
+        tasksController.addTask(task);
+        tasks.setVisible(false);
+        tasks.refresh();
+        tasks.setVisible(true);
     }
 }

@@ -1,6 +1,9 @@
 package ru.valkonsky.taskmanager.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class Task {
 
@@ -26,10 +29,12 @@ public class Task {
         this.userId =userId;
     }
 
-    public Task(String name, String description, Timestamp timestamp, int userId ){
+    public Task(String name, String description, int userId ){
         this.name = name;
         this.description = description;
-        this.timestamp = timestamp;
+        this.timestamp =new Timestamp(ZonedDateTime.now(ZoneId.systemDefault())
+                .minusDays(1)
+                .with(LocalTime.of(19, 0)).toInstant().toEpochMilli());
         this.userId =userId;
     }
 

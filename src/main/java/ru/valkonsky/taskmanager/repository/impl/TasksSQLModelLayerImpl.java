@@ -17,7 +17,7 @@ public class TasksSQLModelLayerImpl implements TasksModelLayer {
 
     @Override
     public void addTask( String name, String description, Timestamp timestamp, int userid) {
-        String query = "INSERT INTO tasks.tasks (\"name\", \"description\",\"timestamp\",\"userId\") VALUES (?,?,?,?)";
+        String query = "INSERT INTO tasks.tasks (\"name\", \"description\",\"timestamp\",\"userid\") VALUES (?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
