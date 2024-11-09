@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import ru.valkonsky.taskmanager.entity.Task;
 import ru.valkonsky.taskmanager.repository.AuthModelLayer;
 import ru.valkonsky.taskmanager.repository.TasksModelLayer;
 import ru.valkonsky.taskmanager.repository.impl.SQLAuthModelLayerImpl;
@@ -33,7 +34,10 @@ public class MainTaskScreenControllerImpl {
     @FXML
     public void initialize() {
         user.setText(authModelLayer.getUserById(userId).getName());
-        ObservableList<String> tasks1 = FXCollections.observableArrayList(tasksModelLayer.getAllTasksByUserId(userId).toString());
+        ObservableList<String> tasks1 = FXCollections.observableArrayList();
+        for (Task task:tasksModelLayer.getAllTasksByUserId(userId)){
+            tasks1.add(task.toString());
+        }
         tasks.setItems(tasks1);
 
     }
