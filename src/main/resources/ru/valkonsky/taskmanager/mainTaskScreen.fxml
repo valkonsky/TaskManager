@@ -16,4 +16,7 @@
     <center>
         <ListView fx:id="tasks"/>
     </center>
+    <bottom>
+        <Button fx:id="addNewTask" text="add task" onAction="#addNewTask"/>
+    </bottom>
 </BorderPane>

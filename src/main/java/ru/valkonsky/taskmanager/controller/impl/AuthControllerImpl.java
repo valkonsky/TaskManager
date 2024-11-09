@@ -24,6 +24,8 @@ public class AuthControllerImpl {
         authModelLayer = new SQLAuthModelLayerImpl();
     }
 
+    User user;
+
 
     @FXML
     private Button login;
@@ -39,7 +41,7 @@ public class AuthControllerImpl {
 
     @FXML
     protected void authorizeUser() throws IOException {
-        User user = authModelLayer.getUserByLoginAndPass(loginField.getText(),passwordField.getText());
+        user = authModelLayer.getUserByLoginAndPass(loginField.getText(),passwordField.getText());
         if (user!=null){
             Stage stage = (Stage) login.getScene().getWindow();
             stage.close();
@@ -60,6 +62,11 @@ public class AuthControllerImpl {
 
     @FXML
     public void registerUser(ActionEvent actionEvent) {
-        System.err.println("register new user not supported now");
+        if (authModelLayer.getUserByLoginAndPass(loginField.getText(),passwordField.getText())==null){
+            authModelLayer.addUser(loginField.getText(),passwordField.getText());
+        }else{
+            System.err.println("user already exist");
+        }
+
     }
 }
